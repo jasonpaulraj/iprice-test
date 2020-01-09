@@ -26,7 +26,7 @@
 			echo "<p style='text-align:center;'>Alternating Uppercase & Lowercase: <b> " . alternatingString($name) . "</b></p>";
 			echo "<p style='text-align:center;color:green;'><b>" . generateCSV($name) . "</b></p>";
 		} else {
-			echo "<p style='text-align:center;color:red;'><b> string not found! </b></p>";
+			echo "<p style='text-align:center;color:red;'><b> text not found! </b></p>";
 		}
 	}
 
@@ -53,7 +53,7 @@
 	function generateCSV($string)
 	{
 		if ($string !== "") {
-			$_string = str_split($string);
+			$_string = str_split($string); // convert all strings and spaces into set of array values
 			if (count($_string) > 0) {
 				$fp = fopen('downloads/output_' . date('YmdHis') . '.csv', 'w');
 				fputcsv($fp, $_string);
@@ -75,7 +75,6 @@
 	<table>
 		<?php
 		$path = 'downloads';
-		$files = scandir($path);
 		$files = array_diff(scandir($path), array('.', '..'));
 
 		if (count($files) > 0) {
